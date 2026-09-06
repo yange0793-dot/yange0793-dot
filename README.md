@@ -15,7 +15,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 | --- | --- |
 | 会设计可判分的编码任务:检查点 / 硬门槛 / 权重 | [grader-lab 判分模型](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/scoring.ts) · [4 道内置示例题](https://github.com/yange0793-dot/grader-lab/blob/main/src/samples.ts) |
 | 会把出题质量检查规则化,拦住套路化出题 | [grader-lab 出题 lint](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/lint.ts) |
-| 判分逻辑可离线复现、可测试、可挂 CI | [grader-lab 命令行判分](https://github.com/yange0793-dot/grader-lab/blob/main/cli/grade.mts) —— 同一套引擎在终端跑,退出码即门;46 项测试在 Node 22/24 两版 CI 上跑 |
+| 判分逻辑可离线复现、可测试、可挂 CI | [grader-lab 命令行判分](https://github.com/yange0793-dot/grader-lab/blob/main/cli/grade.mts) —— 同一套引擎在终端跑,退出码即门;51 项测试在 Node 22/24 两版 CI 上跑 |
 | 出题自检不是口号,是 CI 门 | [示例题自检测试](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/samples.test.ts) —— 参考解必须满分、起始代码必须被硬门槛判 0、题目自身必须过出题 lint |
 | 会把判分标准沉淀成题库,且题库本身持续被验证 | [task-bank](https://github.com/yange0793-dot/task-bank) —— 10 道题按 grader-lab 规格设计,每道附考察点/迷惑项/判分设计说明;CI 逐题自检:参考解满分、起始代码被硬门槛拦、出题 lint 零告警 |
 | 会写带真测试的 CLI 工具 | [prompt-lint](https://github.com/yange0793-dot/prompt-lint)(9 规则 / 24 测试 / py3.10·3.12·3.14 三版矩阵 / 可挂 pre-commit)· [novel-toolchain](https://github.com/yange0793-dot/novel-toolchain)(53 项自测,其中 43 项在 CI 上可复现,另 10 项是本机环境检查) |
@@ -29,7 +29,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 **🎯 [grader-lab](https://github.com/yange0793-dot/grader-lab) — 编码任务判分台**
 浏览器内运行候选代码、按检查点判分:行为断言 / 输出正则 / 源码检查 / 性能预算,硬门槛短路 + 加权 Rubric;
 同一套引擎另有命令行入口,`--min` 决定退出码,可直接当 CI 的门。
-React 19 · TypeScript(strict)· Web Worker(浏览器)/ 子进程 + 超时(命令行)· 46 项测试 · Node 22/24 双版 CI · 推 main 自动部署 · [在线 demo](https://yange0793-dot.github.io/grader-lab/)
+React 19 · TypeScript(strict)· Web Worker(浏览器)/ 子进程 + 超时(命令行)· 51 项测试 · Node 22/24 双版 CI · 推 main 自动部署 · 可从 task-bank 题库一键导入 · [在线 demo](https://yange0793-dot.github.io/grader-lab/)
 
 **🗂 [task-bank](https://github.com/yange0793-dot/task-bank) — 编码评测题库(与 grader-lab 配套)**
 11 道题按 grader-lab 规格设计成完整任务包(题面/ground truth/verifier/难度标注),基础→困难覆盖递归、原型链污染、闭包缓存、LRU 新鲜度、二分变体;附 reward hacking 判据设计手册(六类作弊手法→可执行判据);
