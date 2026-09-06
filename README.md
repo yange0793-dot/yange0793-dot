@@ -32,7 +32,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 React 19 · TypeScript(strict)· Web Worker(浏览器)/ 子进程 + 超时(命令行)· 51 项测试 · Node 22/24 双版 CI · 推 main 自动部署 · 可从 task-bank 题库一键导入 · [在线 demo](https://yange0793-dot.github.io/grader-lab/)
 
 **🗂 [task-bank](https://github.com/yange0793-dot/task-bank) — 编码评测题库(与 grader-lab 配套)**
-11 道题按 grader-lab 规格设计成完整任务包(题面/ground truth/verifier/难度标注),基础→困难覆盖递归、原型链污染、闭包缓存、LRU 新鲜度、二分变体;附 reward hacking 判据设计手册(六类作弊手法→可执行判据);
+12 道题按 grader-lab 规格设计成完整任务包(题面/ground truth/verifier/难度标注),基础→困难覆盖递归、原型链污染、闭包缓存、LRU 新鲜度、二分变体;附 reward hacking 判据设计手册(六类作弊手法→可执行判据);
 每道题的 DESIGN.md 写清考察点、迷惑项设计与判分理由——判分标准可解释,自动判分才值得被信任;
 CI 钉死 grader-lab commit 逐题跑三关自检,判分引擎升级会不会打碎题库,推送即知。
 
