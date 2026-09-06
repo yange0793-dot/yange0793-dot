@@ -17,6 +17,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 | 会把出题质量检查规则化,拦住套路化出题 | [grader-lab 出题 lint](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/lint.ts) |
 | 判分逻辑可离线复现、可测试、可挂 CI | [grader-lab 命令行判分](https://github.com/yange0793-dot/grader-lab/blob/main/cli/grade.mts) —— 同一套引擎在终端跑,退出码即门;44 项测试在 Node 22/24 两版 CI 上跑 |
 | 出题自检不是口号,是 CI 门 | [示例题自检测试](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/samples.test.ts) —— 参考解必须满分、起始代码必须被硬门槛判 0、题目自身必须过出题 lint |
+| 会把判分标准沉淀成题库,且题库本身持续被验证 | [task-bank](https://github.com/yange0793-dot/task-bank) —— 10 道题按 grader-lab 规格设计,每道附考察点/迷惑项/判分设计说明;CI 逐题自检:参考解满分、起始代码被硬门槛拦、出题 lint 零告警 |
 | 会写带真测试的 CLI 工具 | [prompt-lint](https://github.com/yange0793-dot/prompt-lint)(9 规则 / 24 测试 / py3.10·3.12·3.14 三版矩阵 / 可挂 pre-commit)· [novel-toolchain](https://github.com/yange0793-dot/novel-toolchain)(53 项自测,其中 43 项在 CI 上可复现,另 10 项是本机环境检查) |
 | 懂 LLM 应用协议层 | [mixrouter](https://github.com/yange0793-dot/mixrouter) — 本地 Anthropic 协议模型路由器 |
 | 能写原生 macOS 应用 | [CodexContextBar](https://github.com/yange0793-dot/CodexContextBar) — 388 行 Objective-C,零依赖零网络;解析逻辑用 fixture 会话在 CI 上断言,不只验能编译 |
@@ -28,6 +29,11 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 浏览器内运行候选代码、按检查点判分:行为断言 / 输出正则 / 源码检查 / 性能预算,硬门槛短路 + 加权 Rubric;
 同一套引擎另有命令行入口,`--min` 决定退出码,可直接当 CI 的门。
 React 19 · TypeScript(strict)· Web Worker(浏览器)/ 子进程 + 超时(命令行)· 44 项测试 · Node 22/24 双版 CI · 推 main 自动部署 · [在线 demo](https://yange0793-dot.github.io/grader-lab/)
+
+**🗂 [task-bank](https://github.com/yange0793-dot/task-bank) — 编码评测题库(与 grader-lab 配套)**
+10 道题按 grader-lab 规格设计,难度基础→困难,覆盖递归、原型链污染、闭包缓存、LRU 新鲜度、二分变体;
+每道题的 DESIGN.md 写清考察点、迷惑项设计与判分理由——判分标准可解释,自动判分才值得被信任;
+CI 钉死 grader-lab commit 逐题跑三关自检,判分引擎升级会不会打碎题库,推送即知。
 
 **🔍 [prompt-lint](https://github.com/yange0793-dot/prompt-lint) — 提示词体检 CLI**
 规则式检查模糊表述、全角字符、矛盾指令等 9 类问题;离线确定性,零依赖,`--max-warn` 可把草稿气味也拦在 CI 外。
