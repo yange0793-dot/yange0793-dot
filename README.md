@@ -19,7 +19,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 | 出题自检不是口号,是 CI 门 | [示例题自检测试](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/samples.test.ts) —— 参考解必须满分、起始代码必须被硬门槛判 0、题目自身必须过出题 lint |
 | 会写带真测试的 CLI 工具 | [prompt-lint](https://github.com/yange0793-dot/prompt-lint)(9 规则 / 24 测试 / py3.10·3.12·3.14 三版矩阵 / 可挂 pre-commit)· [novel-toolchain](https://github.com/yange0793-dot/novel-toolchain)(53 项自测,其中 43 项在 CI 上可复现,另 10 项是本机环境检查) |
 | 懂 LLM 应用协议层 | [mixrouter](https://github.com/yange0793-dot/mixrouter) — 本地 Anthropic 协议模型路由器 |
-| 能写原生 macOS 应用 | [CodexContextBar](https://github.com/yange0793-dot/CodexContextBar) — 306 行 Objective-C,零依赖零网络;解析逻辑用 fixture 会话在 CI 上断言,不只验能编译 |
+| 能写原生 macOS 应用 | [CodexContextBar](https://github.com/yange0793-dot/CodexContextBar) — 388 行 Objective-C,零依赖零网络;解析逻辑用 fixture 会话在 CI 上断言,不只验能编译 |
 
 ## 精选项目
 
@@ -40,7 +40,7 @@ Python · 24 项测试(含两条挡文档漂移的:README 里贴的真实输出�
 按模型名路由到不同上游,仿 cc-switch 控制台,本地模型接入 Claude Code 生态。
 
 **📊 [CodexContextBar](https://github.com/yange0793-dot/CodexContextBar) — macOS 菜单栏上下文窗口监控**
-306 行 Objective-C,Cocoa only,无网络权限。读 `~/.codex/sessions` 的 jsonl 算上下文占用;`CODEX_CONTEXT_BAR_ROOT` 可指向 fixture,CI 每次推送都断言百分比与模型名。
+388 行 Objective-C,Cocoa only,无网络权限。读 `~/.codex/sessions` 的 jsonl 算上下文占用;`CODEX_CONTEXT_BAR_ROOT` 可指向 fixture,CI 每次推送都断言百分比与模型名。
 
 ## 我怎么工作
 
