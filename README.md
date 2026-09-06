@@ -17,7 +17,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 | 会把出题质量检查规则化,拦住套路化出题 | [grader-lab 出题 lint](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/lint.ts) |
 | 判分逻辑可离线复现、可测试、可挂 CI | [grader-lab 命令行判分](https://github.com/yange0793-dot/grader-lab/blob/main/cli/grade.mts) —— 同一套引擎在终端跑,退出码即门;51 项测试在 Node 22/24 两版 CI 上跑 |
 | 出题自检不是口号,是 CI 门 | [示例题自检测试](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/samples.test.ts) —— 参考解必须满分、起始代码必须被硬门槛判 0、题目自身必须过出题 lint |
-| 会把判分标准沉淀成题库,且题库本身持续被验证 | [task-bank](https://github.com/yange0793-dot/task-bank) —— 10 道题按 grader-lab 规格设计,每道附考察点/迷惑项/判分设计说明;CI 逐题自检:参考解满分、起始代码被硬门槛拦、出题 lint 零告警 |
+| 会把判分标准沉淀成题库,且题库本身持续被验证 | [task-bank](https://github.com/yange0793-dot/task-bank) —— 12 道题按 grader-lab 规格设计,每道附考察点/迷惑项/判分设计说明;CI 逐题自检:参考解满分、起始代码被硬门槛拦、出题 lint 零告警 |
 | 会写带真测试的 CLI 工具 | [prompt-lint](https://github.com/yange0793-dot/prompt-lint)(9 规则 / 24 测试 / py3.10·3.12·3.14 三版矩阵 / 可挂 pre-commit)· [novel-toolchain](https://github.com/yange0793-dot/novel-toolchain)(53 项自测,其中 43 项在 CI 上可复现,另 10 项是本机环境检查) |
 | 独立交付解决真实需求的工具,零依赖可审计 | [agent-bill](https://github.com/yange0793-dot/agent-bill) —— 从本地会话日志统计 Claude Code / Codex 的 token 用量与成本,`npx` 直跑零安装零上传;正确处理两家互斥的缓存 token 语义,未知名模型不计费只点名 |
 | 懂 LLM 应用协议层 | [mixrouter](https://github.com/yange0793-dot/mixrouter) — 本地 Anthropic 协议模型路由器 |
