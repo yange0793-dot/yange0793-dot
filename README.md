@@ -40,7 +40,7 @@ CI 钉死 grader-lab commit 逐题跑三关自检,判分引擎升级会不会打
 从本地会话日志统计 Claude Code 与 Codex 的 token 用量、按模型/天/项目分解与估算成本,`npx` 直跑;
 零 npm 依赖、零网络请求,数据不出本机。两家工具互斥的缓存 token 语义(Codex 缓存是子集、
 Claude 缓存是独立计数)在解析层归一化并有测试钉住;未计价模型照常计 token、不计费、报告点名。
-Node 18/22/24 三版 CI · 10 项测试 · [定价表](https://github.com/yange0793-dot/agent-bill/blob/main/pricing.json)欢迎 PR 校准
+Node 18/22/24 三版 CI · 14 项测试 · [定价表](https://github.com/yange0793-dot/agent-bill/blob/main/pricing.json)欢迎 PR 校准
 
 **🔍 [prompt-lint](https://github.com/yange0793-dot/prompt-lint) — 提示词体检 CLI**
 规则式检查模糊表述、全角字符、矛盾指令等 9 类问题;离线确定性,零依赖,`--max-warn` 可把草稿气味也拦在 CI 外。
