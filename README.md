@@ -19,6 +19,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 | 出题自检不是口号,是 CI 门 | [示例题自检测试](https://github.com/yange0793-dot/grader-lab/blob/main/src/engine/samples.test.ts) —— 参考解必须满分、起始代码必须被硬门槛判 0、题目自身必须过出题 lint |
 | 会把判分标准沉淀成题库,且题库本身持续被验证 | [task-bank](https://github.com/yange0793-dot/task-bank) —— 10 道题按 grader-lab 规格设计,每道附考察点/迷惑项/判分设计说明;CI 逐题自检:参考解满分、起始代码被硬门槛拦、出题 lint 零告警 |
 | 会写带真测试的 CLI 工具 | [prompt-lint](https://github.com/yange0793-dot/prompt-lint)(9 规则 / 24 测试 / py3.10·3.12·3.14 三版矩阵 / 可挂 pre-commit)· [novel-toolchain](https://github.com/yange0793-dot/novel-toolchain)(53 项自测,其中 43 项在 CI 上可复现,另 10 项是本机环境检查) |
+| 独立交付解决真实需求的工具,零依赖可审计 | [agent-bill](https://github.com/yange0793-dot/agent-bill) —— 从本地会话日志统计 Claude Code / Codex 的 token 用量与成本,`npx` 直跑零安装零上传;正确处理两家互斥的缓存 token 语义,未知名模型不计费只点名 |
 | 懂 LLM 应用协议层 | [mixrouter](https://github.com/yange0793-dot/mixrouter) — 本地 Anthropic 协议模型路由器 |
 | 能写原生 macOS 应用 | [CodexContextBar](https://github.com/yange0793-dot/CodexContextBar) — 388 行 Objective-C,零依赖零网络;解析逻辑用 fixture 会话在 CI 上断言,不只验能编译 |
 | 会给"手感类"交付上自动验证:无头测试 + 可复现构建 | [canvas-games 无头物理测试](https://github.com/yange0793-dot/canvas-games/blob/main/slingshot/build/test.js) —— 9 项断言不开浏览器跑物理(开局不塌 / 弹道可达 / 命中真伤害);CI 重拼单文件成品后 `git diff --exit-code`,成品与源码漂移就红 |
@@ -34,6 +35,12 @@ React 19 · TypeScript(strict)· Web Worker(浏览器)/ 子进程 + 超时(命�
 11 道题按 grader-lab 规格设计成完整任务包(题面/ground truth/verifier/难度标注),基础→困难覆盖递归、原型链污染、闭包缓存、LRU 新鲜度、二分变体;附 reward hacking 判据设计手册(六类作弊手法→可执行判据);
 每道题的 DESIGN.md 写清考察点、迷惑项设计与判分理由——判分标准可解释,自动判分才值得被信任;
 CI 钉死 grader-lab commit 逐题跑三关自检,判分引擎升级会不会打碎题库,推送即知。
+
+**💳 [agent-bill](https://github.com/yange0793-dot/agent-bill) — AI 编程工具用量账单(独立工具)**
+从本地会话日志统计 Claude Code 与 Codex 的 token 用量、按模型/天/项目分解与估算成本,`npx` 直跑;
+零 npm 依赖、零网络请求,数据不出本机。两家工具互斥的缓存 token 语义(Codex 缓存是子集、
+Claude 缓存是独立计数)在解析层归一化并有测试钉住;未计价模型照常计 token、不计费、报告点名。
+Node 18/22/24 三版 CI · 10 项测试 · [定价表](https://github.com/yange0793-dot/agent-bill/blob/main/pricing.json)欢迎 PR 校准
 
 **🔍 [prompt-lint](https://github.com/yange0793-dot/prompt-lint) — 提示词体检 CLI**
 规则式检查模糊表述、全角字符、矛盾指令等 9 类问题;离线确定性,零依赖,`--max-warn` 可把草稿气味也拦在 CI 外。
