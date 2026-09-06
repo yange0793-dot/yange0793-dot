@@ -20,6 +20,7 @@ I design and verify AI coding evaluation tasks — task specs, checkpoints, hard
 | 会写带真测试的 CLI 工具 | [prompt-lint](https://github.com/yange0793-dot/prompt-lint)(9 规则 / 24 测试 / py3.10·3.12·3.14 三版矩阵 / 可挂 pre-commit)· [novel-toolchain](https://github.com/yange0793-dot/novel-toolchain)(53 项自测,其中 43 项在 CI 上可复现,另 10 项是本机环境检查) |
 | 懂 LLM 应用协议层 | [mixrouter](https://github.com/yange0793-dot/mixrouter) — 本地 Anthropic 协议模型路由器 |
 | 能写原生 macOS 应用 | [CodexContextBar](https://github.com/yange0793-dot/CodexContextBar) — 388 行 Objective-C,零依赖零网络;解析逻辑用 fixture 会话在 CI 上断言,不只验能编译 |
+| 会给"手感类"交付上自动验证:无头测试 + 可复现构建 | [canvas-games 无头物理测试](https://github.com/yange0793-dot/canvas-games/blob/main/slingshot/build/test.js) —— 9 项断言不开浏览器跑物理(开局不塌 / 弹道可达 / 命中真伤害);CI 重拼单文件成品后 `git diff --exit-code`,成品与源码漂移就红 |
 
 ## 精选项目
 
@@ -42,6 +43,10 @@ Python · 24 项测试(含两条挡文档漂移的:README 里贴的真实输出�
 **📊 [CodexContextBar](https://github.com/yange0793-dot/CodexContextBar) — macOS 菜单栏上下文窗口监控**
 388 行 Objective-C,Cocoa only,无网络权限。读 `~/.codex/sessions` 的 jsonl 算上下文占用;`CODEX_CONTEXT_BAR_ROOT` 可指向 fixture,CI 每次推送都断言百分比与模型名。
 
+**🎮 [canvas-games](https://github.com/yange0793-dot/canvas-games) — 两款单文件 Canvas 游戏**
+弹弓物理(仿 Angry Birds 练习作:Matter.js 物理、木/玻璃/石三材质、三种鸟)与俯视角割草生存,双击 `.html` 即玩零安装;
+游戏逻辑有 9 项无头测试——Node 直跑物理断言,不开浏览器;单文件成品由源码块拼接生成,CI 重拼一次 `git diff` 保证拼接可复现。
+
 ## 我怎么工作
 
 - 需求先拆成可验收的小块,每块想清楚怎么检查(断言 / 测试 / 可点开的 demo),再动手;
@@ -51,5 +56,5 @@ Python · 24 项测试(含两条挡文档漂移的:README 里贴的真实输出�
 ## 技术栈(诚实分级)
 
 - **熟练**:Python · TypeScript · React · Git / GitHub Actions · AI 编程工具链(Claude Code / Codex / ZCode)
-- **能用**:Objective-C · Vite · vitest / pytest · Playwright
+- **能用**:Objective-C · Matter.js · Vite · vitest / pytest · Playwright
 - **了解**:Go · Rust
